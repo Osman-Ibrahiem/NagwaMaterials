@@ -13,4 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Materials"
+include ':customviews'
 include ':app'
+include ':domain'
