@@ -6,6 +6,8 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+apply plugin: 'dagger.hilt.android.plugin'
+
 android {
     compileSdk 32
 
@@ -59,9 +61,20 @@ dependencies {
     // Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1-native-mt'
+    // Dagger Hilt
+    implementation 'com.google.dagger:hilt-android:2.41'
+    implementation "androidx.hilt:hilt-navigation-fragment:1.0.0"
+    kapt 'com.google.dagger:hilt-android-compiler:2.41'
+//    kapt "com.google.dagger:hilt-compiler:2.37"
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.13.1'
+    kapt 'com.github.bumptech.glide:compiler:4.13.1'
 
     implementation project(path: ':customviews')
-    api project(path: ':domain')
+    api project(path: ':data')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

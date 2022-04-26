@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.domain.model.FileStatus
-import com.domain.model.FileType
-import com.domain.model.MaterialFile
+import com.domain.common.model.FileStatus
+import com.domain.common.model.FileType
+import com.domain.common.model.MaterialFile
 import com.osman.customviews.DownloadButtonProgress
 import com.osman.materials.R
 import com.osman.materials.databinding.ItemFileBinding
+import com.osman.materials.di.GlideApp
 
 class MaterialsAdapter(
     private val onItemDownloadClick: (position: Int, file: MaterialFile) -> Unit,
@@ -53,6 +54,15 @@ class MaterialsAdapter(
             diffResult.dispatchUpdatesTo(this)
         }
 
+    fun updateFile(file: MaterialFile) {
+        filteredValues.forEachIndexed { index, materialFile ->
+            if (materialFile.id == file.id) {
+                filteredValues[index] = file
+                notifyItemChanged(index)
+            }
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialViewHolder {
         return MaterialViewHolder.create(parent)
     }
@@ -68,6 +78,9 @@ class MaterialsAdapter(
                 else -> R.drawable.logo_small
             }
         )
+
+        val context = holder.itemView.context
+        GlideApp.with(context).load(material.url).into(holder.binding.thumbnail)
 
         holder.binding.title.text = material.title
 

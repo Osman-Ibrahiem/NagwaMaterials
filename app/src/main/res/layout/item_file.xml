@@ -34,6 +34,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:src="@drawable/shadow"
@@ -75,7 +85,7 @@
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:ellipsize="end"
                 android:lineSpacingExtra="@dimen/_minus3sdp"
                 android:maxLines="2"
